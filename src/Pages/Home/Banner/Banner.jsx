@@ -18,6 +18,18 @@ const Banner = () => {
             ❯
           </a>
         </div>
+        <div className="absolute flex items-center h-full bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
+            <div className='text-white space-y-7 pl-12 w-1/2'>
+              <h2 className='text-6xl font-bold'>Affordable Price For Car Servicing</h2>
+              <p>
+              There are many variations of passages of  available, but the majority have suffered alteration in some form
+              </p>
+              <div>
+               <button className="btn bg-orange-600 text-white">Discover More</button>
+               <button className="btn btn-outline text-white ml-5">Latest Project</button>
+            </div>
+            </div>
+        </div>
       </div>
       <div id="slide2" className="carousel-item relative w-full">
         <img
@@ -31,6 +43,18 @@ const Banner = () => {
           <a href="#slide3" className="btn btn-circle">
             ❯
           </a>
+        </div>
+        <div className="absolute flex items-center h-full bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
+            <div className='text-white space-y-7 pl-12 w-1/2'>
+              <h2 className='text-6xl font-bold'>Affordable Price For Car Servicing</h2>
+              <p>
+              There are many variations of passages of  available, but the majority have suffered alteration in some form
+              </p>
+              <div>
+               <button className="btn bg-orange-600 text-white">Discover More</button>
+               <button className="btn btn-outline text-white ml-5">Latest Project</button>
+            </div>
+            </div>
         </div>
       </div>
       <div id="slide3" className="carousel-item relative w-full">
@@ -46,6 +70,18 @@ const Banner = () => {
             ❯
           </a>
         </div>
+        <div className="absolute flex items-center h-full bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
+            <div className='text-white space-y-7 pl-12 w-1/2'>
+              <h2 className='text-6xl font-bold'>Affordable Price For Car Servicing</h2>
+              <p>
+              There are many variations of passages of  available, but the majority have suffered alteration in some form
+              </p>
+              <div>
+               <button className="btn bg-orange-600 text-white">Discover More</button>
+               <button className="btn btn-outline text-white ml-5">Latest Project</button>
+            </div>
+            </div>
+        </div>
       </div>
       <div id="slide4" className="carousel-item relative w-full">
         <img
@@ -59,6 +95,18 @@ const Banner = () => {
           <a href="#slide1" className="btn btn-circle">
             ❯
           </a>
+        </div>
+        <div className="absolute flex items-center h-full bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
+            <div className='text-white space-y-7 pl-12 w-1/2'>
+              <h2 className='text-6xl font-bold'>Affordable Price For Car Servicing</h2>
+              <p>
+              There are many variations of passages of  available, but the majority have suffered alteration in some form
+              </p>
+              <div>
+               <button className="btn bg-orange-600 text-white">Discover More</button>
+               <button className="btn btn-outline text-white ml-5">Latest Project</button>
+            </div>
+            </div>
         </div>
       </div>
     </div>

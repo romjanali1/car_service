@@ -4,7 +4,7 @@ import logo from '../../../assets/logo.svg'
 const Navbar = () => {
   const navItems = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="about">About</Link></li>
+        <li><Link to="/about">About</Link></li>
         <li><Link>Services</Link></li>
         <li><Link>Blog</Link></li>
         <li><Link>Contact</Link></li>
@@ -23,7 +23,7 @@ const Navbar = () => {
       </ul>
     </div>
     <Link to='/' className="btn btn-ghost normal-case text-xl">
-      <img src={logo} alt="" />
+      <img className='w-20' src={logo} alt="" />
     </Link>
   </div>
   <div className="navbar-center hidden lg:flex">
