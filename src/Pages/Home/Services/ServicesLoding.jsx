@@ -1,3 +1,4 @@
+import { BiRightArrowAlt } from "react-icons/bi";
 const ServicesLoding = ({ service }) => {
     const {title, img, price} = service;
   return (
@@ -11,7 +12,10 @@ const ServicesLoding = ({ service }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
-        <p className="text-orange-500">Price:$ {price}</p>
+        <div className="flex items-center relative text-orange-500">
+        <p>Price:$ {price}</p>
+        <p className="absolute right-0"><BiRightArrowAlt/></p>
+        </div>
       </div>
     </div>
   );
