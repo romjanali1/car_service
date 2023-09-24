@@ -10,7 +10,7 @@ const Services = () => {
         .then(data => setServices(data));
     },[])
     return (
-        <div>
+        <div className="grid justify-items-center">
             <div className="text-center space-y-4">
                 <h2 className="text-orange-500 text-2xl font-bold">Service</h2>
                 <h2 className="text-3xl font-bold">Our Service Area</h2>

@@ -1,8 +1,9 @@
 import { BiRightArrowAlt } from "react-icons/bi";
+
 const ServicesLoding = ({ service }) => {
     const {title, img, price} = service;
   return (
-    <div className="card w-96 shadow-xl">
+    <div className="card w-96 shadow-xl lg:mx-20">
       <figure className="px-10 pt-10">
         <img
           src={img}

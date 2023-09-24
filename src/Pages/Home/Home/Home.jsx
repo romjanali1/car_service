@@ -1,5 +1,6 @@
 import About from "../About/About";
 import Banner from "../Banner/Banner";
+import Products from "../Products/Products";
 import Services from "../Services/Services";
 import WorkTime from "../WorkTime/WorkTime";
 
@@ -10,7 +11,8 @@ const Home = () => {
             <Banner></Banner> 
             <About></About> 
             <Services></Services> 
-            <WorkTime></WorkTime>        
+            <WorkTime></WorkTime> 
+            <Products></Products>       
         </div>
     );
 };
