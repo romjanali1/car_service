@@ -12,6 +12,14 @@ const ProductsLoed = ({product}) => {
           />
         </figure>
         <div className="card-body text-center">
+        <div className="rating rating-sm flex justify-center">
+         <input type="radio" name="rating-6" className="mask mask-star-2 bg-orange-400" checked />
+         <input type="radio" name="rating-6" className="mask mask-star-2 bg-orange-400" checked />
+         <input type="radio" name="rating-6" className="mask mask-star-2 bg-orange-400" checked />
+         <input type="radio" name="rating-6" className="mask mask-star-2 bg-orange-400" checked />
+         <input type="radio" name="rating-6" className="mask mask-star-2 bg-orange-400" checked />
+        </div>
+          
           <h2>{title}</h2>
           <div className="flex items-center relative text-orange-500">
           <p>Price:$ {price}</p>
