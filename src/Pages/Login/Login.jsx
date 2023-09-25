@@ -1,5 +1,8 @@
 import login from '../../assets/images/login/login.svg'
 const Login = () => {
+    const hendelLogin = event => {
+        event.preventDefault();
+    }
   return (
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row">
@@ -10,7 +13,7 @@ const Login = () => {
         <div className="card flex-shrink-0 w-1/2 max-w-sm border-slate-300 border-2 rounded-md">
             <h1 className='text-center text-2xl font-medium mt-5'>Login</h1>
             
-          <form className="card-body">
+          <form onSubmit={hendelLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
