@@ -1,18 +1,21 @@
-import login from '../../assets/images/login/login.svg'
+import { Link } from "react-router-dom";
+import login from "../../assets/images/login/login.svg";
+import { FcGoogle } from "react-icons/fc";
+import { CiLinkedin, CiFacebook } from "react-icons/ci";
 const Login = () => {
-    const hendelLogin = event => {
-        event.preventDefault();
-    }
+  const hendelLogin = (event) => {
+    event.preventDefault();
+  };
   return (
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row">
         <div className=" w-1/2 lg:mr-10">
-            <img src={login} alt="" />
+          <img src={login} alt="" />
         </div>
 
         <div className="card flex-shrink-0 w-1/2 max-w-sm border-slate-300 border-2 rounded-md">
-            <h1 className='text-center text-2xl font-medium mt-5'>Login</h1>
-            
+          <h1 className="text-center text-2xl font-medium mt-5">Login</h1>
+
           <form onSubmit={hendelLogin} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -20,7 +23,7 @@ const Login = () => {
               </label>
               <input
                 type="text"
-                name='email'
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
               />
@@ -31,7 +34,7 @@ const Login = () => {
               </label>
               <input
                 type="text"
-                name='password'
+                name="password"
                 placeholder="password"
                 className="input input-bordered"
               />
@@ -42,10 +45,24 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary" type="submit">Login</button>
+              <button className="btn bg-red-500 hover:bg-red-600 text-white" type="submit">
+                Login
+              </button>
             </div>
-            
           </form>
+          <h1 className="text-center">Or Sign In with</h1>
+          <div className="avatar placeholder flex justify-center space-x-3">
+            <div className="bg-slate-100 text-neutral-content rounded-full w-12">
+              <span className="text-xs"><FcGoogle size={20}/></span>
+            </div>
+            <div className="bg-slate-100 text-neutral-content rounded-full w-12">
+              <span className="text-xs"><CiLinkedin color="0A66C2" size={20}/></span>
+            </div>
+            <div className="bg-slate-100 text-neutral-content rounded-full w-12">
+              <span className="text-xs"><CiFacebook color="0A66C2" size={20}/></span>
+            </div>
+          </div>
+          <h1 className="text-center">Have an account? <Link to='/signup' className="text-orange-500">Sign Up</Link></h1>
         </div>
       </div>
     </div>
