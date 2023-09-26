@@ -2,10 +2,32 @@ import { Link } from "react-router-dom";
 import login from "../../assets/images/login/login.svg";
 import { FcGoogle } from "react-icons/fc";
 import { CiLinkedin, CiFacebook } from "react-icons/ci";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const SignUp = () => {
+  const {createUser} = useContext(AuthContext);
     const hendelSignUp = (event) => {
         event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value
+        console.log(name, email, password)
+
+        createUser(email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user)
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage)
+          // ..
+        });
       };
     return (
         <div className="hero min-h-screen">
