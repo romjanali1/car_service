@@ -1,7 +1,8 @@
-import { BiRightArrowAlt } from "react-icons/bi";
+
+import { Link } from "react-router-dom";
 
 const ServicesLoding = ({ service }) => {
-    const {title, img, price} = service;
+    const {_id, title, img, price} = service;
   return (
     <div className="card w-96 shadow-xl lg:mx-20">
       <figure className="px-10 pt-10">
@@ -13,9 +14,13 @@ const ServicesLoding = ({ service }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
-        <div className="flex items-center relative text-orange-500">
+        <div className="flex items-center relative">
         <p>Price:$ {price}</p>
-        <p className="absolute right-0"><BiRightArrowAlt/></p>
+        <div className="absolute right-0">
+          <Link to={`/checkout/${_id}`}>
+          <button className="bg-orange-500 text-white rounded px-2">Book Now</button>
+          </Link>
+        </div>
         </div>
       </div>
     </div>
