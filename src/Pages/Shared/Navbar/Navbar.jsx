@@ -2,13 +2,13 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.svg'
 const Navbar = () => {
-  const navItems = <>
+  const navItems = <div className='text-1xl font-bold md:flex'>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link>Services</Link></li>
         <li><Link>Blog</Link></li>
         <li><Link>Contact</Link></li>
-  </>
+  </div>
     return (
         <div className="navbar bg-base-100 h-28">
   <div className="navbar-start">
