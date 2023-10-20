@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import login from "../../assets/images/login/login.svg";
 import { FcGoogle } from "react-icons/fc";
 import { CiLinkedin, CiFacebook } from "react-icons/ci";
@@ -7,6 +7,10 @@ import { AuthContext } from "../../Providers/AuthProviders";
 
 const Login = () => {
   const {signIn} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
 
   const hendelLogin = (event) => {
     event.preventDefault();
@@ -20,7 +24,7 @@ const Login = () => {
       // Signed in 
       const user = userCredential.user;
       console.log(user)
-      // ...
+      navigate(from, { replace: true } )
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -55,7 +59,7 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder="password"
                 className="input input-bordered"

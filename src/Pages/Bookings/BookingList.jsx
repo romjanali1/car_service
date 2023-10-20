@@ -1,5 +1,5 @@
-const BookingList = ({ booking, hendelDelete }) => {
-    const {_id, customerName, email, date, img, serviceTitel, amount} = booking;
+const BookingList = ({ booking, hendelDelete, hendelBookingUpdate }) => {
+    const {_id, customerName, email, date, img, serviceTitel, amount, status} = booking;
 
 
   return (
@@ -30,7 +30,10 @@ const BookingList = ({ booking, hendelDelete }) => {
       </td>
       <td>{date}</td>
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        {status === 'confirm' ? <span className="font-bold text-primary">confirm</span>:
+            <button onClick={() => hendelBookingUpdate(_id)} className="btn btn-ghost btn-xs">Please confirm</button>
+        }
+
       </th>
     </tr>
   );
