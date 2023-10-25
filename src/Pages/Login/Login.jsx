@@ -17,14 +17,28 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value
-    console.log( email, password)
 
     signIn(email, password)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      console.log(user)
-      navigate(from, { replace: true } )
+      const logenUser = {
+        email: user.email
+      }
+      console.log(logenUser)
+      fetch('http://localhost:5000/jwt', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(logenUser)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log('jwt response', data)
+        localStorage.setItem('car-access-token', data.token);
+        navigate(from, { replace: true } )
+      })
     })
     .catch((error) => {
       const errorCode = error.code;
