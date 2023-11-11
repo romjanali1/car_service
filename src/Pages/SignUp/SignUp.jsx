@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import login from "../../assets/images/login/login.svg";
 import { FcGoogle } from "react-icons/fc";
 import { CiLinkedin, CiFacebook } from "react-icons/ci";
@@ -6,7 +6,20 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 
 const SignUp = () => {
-  const {createUser} = useContext(AuthContext);
+  const {createUser, googleSignIn} = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const handelgoogleSignIn = () => {
+    googleSignIn()
+    .then(result => {
+      console.log(result.user)
+    })
+    .catch(error => console.log(error))
+    navigate(from, { replace: true } )
+  };
+
     const hendelSignUp = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -28,6 +41,7 @@ const SignUp = () => {
           console.log(errorCode, errorMessage)
           // ..
         });
+
       };
     return (
         <div className="hero min-h-screen">
@@ -87,7 +101,7 @@ const SignUp = () => {
             <h1 className="text-center">Or Sign Up with</h1>
             <div className="avatar placeholder flex justify-center space-x-3">
               <div className="bg-slate-100 text-neutral-content rounded-full w-12">
-                <span className="text-xs"><FcGoogle size={20}/></span>
+                <span onClick={handelgoogleSignIn} className="text-xs"><FcGoogle size={20}/></span>
               </div>
               <div className="bg-slate-100 text-neutral-content rounded-full w-12">
                 <span className="text-xs"><CiLinkedin color="0A66C2" size={20}/></span>

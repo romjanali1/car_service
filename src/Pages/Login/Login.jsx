@@ -6,11 +6,20 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 
 const Login = () => {
-  const {signIn} = useContext(AuthContext);
+  const {signIn, googleSignIn} = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
+
+  const handelgoogleSignIn = () => {
+    googleSignIn()
+    .then(result => {
+      console.log(result.user)
+    })
+    .catch(error => console.log(error))
+    navigate(from, { replace: true } )
+  }
 
   const hendelLogin = (event) => {
     event.preventDefault();
@@ -22,23 +31,11 @@ const Login = () => {
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      const logenUser = {
-        email: user.email
-      }
-      console.log(logenUser)
-      fetch('http://localhost:5000/jwt', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(logenUser)
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log('jwt response', data)
-        localStorage.setItem('car-access-token', data.token);
-        navigate(from, { replace: true } )
-      })
+
+      console.log(user)
+      navigate(from, { replace: true } )
+
+
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -93,7 +90,7 @@ const Login = () => {
           <h1 className="text-center">Or Sign In with</h1>
           <div className="avatar placeholder flex justify-center space-x-3">
             <div className="bg-slate-100 text-neutral-content rounded-full w-12">
-              <span className="text-xs"><FcGoogle size={20}/></span>
+              <span onClick={handelgoogleSignIn} className="text-xs"><FcGoogle size={20}/></span>
             </div>
             <div className="bg-slate-100 text-neutral-content rounded-full w-12">
               <span className="text-xs"><CiLinkedin color="0A66C2" size={20}/></span>

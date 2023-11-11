@@ -9,10 +9,10 @@ const Navbar = () => {
   const hendelLogOut = () => {
     logOut()
     .then( () => {})
-    localStorage.removeItem('car-access-token')
+    
     .catch(error => console.log(error))
   }
-  const navItems = <div className='text-1xl font-bold md:flex'>
+  const navItems = <div className='text-1xl font-bold lg:flex'>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link>Services</Link></li>
