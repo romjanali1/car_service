@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from "../Firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app)
@@ -31,30 +32,23 @@ const AuthProvider = ({children}) => {
     }
 
     useEffect( () => {
-       const unsubscribe =  onAuthStateChanged(auth, currentUser => {
+       const unsubscribe =  onAuthStateChanged(auth, currentUser => {    
+            const userEmail = currentUser?.email || user?.email; 
+            const loggedUser = {email: userEmail}; 
             setUser(currentUser)
             setLoding(false);
 
-            if(currentUser && currentUser.email){
-                const logenUser = {
-                    email: currentUser.email
-                  }
-                fetch('http://localhost:5000/jwt', {
-                    method: 'POST',
-                    headers: {
-                      'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(logenUser)
-                  })
-                  .then(res => res.json())
-                  .then(data => {
-                    console.log('jwt response', data)
-                    localStorage.setItem('car-access-token', data.token);
-                    
-                  })
+            if(currentUser){
+                axios.post( 'http://localhost:5000/jwt', loggedUser, {withCredentials: true})
+                .then(res => {
+                    console.log('token response', res.data);
+                })
             }
             else{
-                localStorage.removeItem('car-access-token');
+                axios.post('http://localhost:5000/logout', loggedUser, {withCredentials: true})
+                .then(res =>{
+                    console.log(res.data)
+                })
             }
         });
         return () => {

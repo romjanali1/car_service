@@ -25,7 +25,7 @@ const Booking = () => {
             serviceTitel: title,
             amount
         }
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://car-service-server-six.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
