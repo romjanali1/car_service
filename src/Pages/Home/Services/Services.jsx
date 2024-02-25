@@ -5,7 +5,7 @@ import ServicesLoding from "./ServicesLoding";
 const Services = () => {
     const [services, setServices] = useState([]);
     useEffect( () => {
-        fetch('https://car-service-server-six.vercel.app/services')
+        fetch('http://localhost:5000/services')
         .then(res => res.json())
         .then(data => setServices(data));
     },[])

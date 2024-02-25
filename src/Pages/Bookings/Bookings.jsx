@@ -2,17 +2,19 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import BookingList from "./BookingList";
 import { useNavigate } from "react-router-dom";
+import useAxioshook from "../../../hooks/useAxioshook";
 
 
 const Bookings = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
+  const axioshook = useAxioshook();
   const navigate = useNavigate();
 
   const hendelDelete = id  => {
     const proced = confirm('Are you delete')
     if(proced) {
-        fetch(`https://car-service-server-six.vercel.app/bookings/${id}`,{
+        fetch(`http://localhost:5000/bookings/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -27,7 +29,7 @@ const Bookings = () => {
 }
 
 const hendelBookingUpdate = id => {
-  fetch(`https://car-service-server-six.vercel.app/bookings/${id}`,{
+  fetch(`http://localhost:5000/bookings/${id}`,{
     method:'PATCH',
     headers: {
       'content-type': 'application/json'
@@ -49,25 +51,20 @@ const hendelBookingUpdate = id => {
 
 }
 
-  const url = `https://car-service-server-six.vercel.app/bookings?email=${user.email}`;
+  const url = `/bookings?email=${user?.email}`;
+
   useEffect(() => {
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('car-access-token')}`
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if(!data.error){
-          setBookings(data);
+    axioshook.get(url)
+      .then((res) => {
+        if(!res.data.error){
+          setBookings(res.data);
         }
         else{
           navigate('/')
         }
         
       });
-  }, [url, navigate]);
+  }, [url, axioshook, navigate]);
   return (
     <div className="overflow-x-auto">
       <table className="table">
